@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #4CAF50;
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        a {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        a:hover {
+            background-color: #45a049;
+        }
+
+        /* Optional: Add a border around the list */
+        ul {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome, {{ user.username }}!</h1>
+    <p>Your role: {{ user.groups.all|join:", " }}</p>
+
+    <ul>
+        {% if perms.clients.add_product %}
+            <li><a href="{% url 'add_product' %}">Добавить продукт</a></li>
+        {% endif %}
+        {% if perms.clients.change_product %}
+            <li><a href="{% url 'product_list' %}">Изменить продукты</a></li>
+        {% endif %}
+        {% if perms.auth.add_user %}
+            <li><a href="{% url 'add_user' %}">Добавить сотрудника</a></li>
+        {% endif %}
+    </ul>
+</body>
+</html>

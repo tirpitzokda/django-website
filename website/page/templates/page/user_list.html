@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список сотрудников</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #fff;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        li:hover {
+            background-color: #f0f0f0;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        a:hover {
+            background-color: #45a049;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #ddd;
+            color: #333;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .back-button:hover {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <a href="{% url 'dashboard' %}" class="back-button">Назад</a>
+
+    <h1>Список сотрудников</h1>
+    <ul>
+        {% for user in users %}
+            <li>{{ user.first_name }} {{ user.last_name }} {{ user.username }} - {{ user.groups.all|join:", " }}
+                <div>
+                    <a href="{% url 'delete_user' user.id %}">Удалить</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add_user' %}">Добавить</a>
+</body>
+</html>

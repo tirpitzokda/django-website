@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Product List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            font-size: 18px; /* Увеличение общего размера шрифта на странице */
+        }
+
+        h1 {
+            color: #0073e6;
+            text-align: center;
+            font-size: 36px; /* Увеличение размера шрифта заголовка */
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        li {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            font-size: 22px; /* Увеличение размера шрифта для элементов списка */
+            color: #555555;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        li span.price {
+            color: #0073e6;
+            font-weight: bold;
+        }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #ddd;
+            color: #333;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .back-button:hover {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="{% url 'clients_main' %}" class="back-button">Назад</a>
+
+    <h1>Product list</h1>
+    <ul>
+        {% for product in products %}
+        <li>{{ product.name }} - {{ product.available_quantity }} in stock -
+            <span class="price">${{ product.price|floatformat:0 }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>

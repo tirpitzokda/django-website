@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Наши сотрудники</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #0073e6;
+            text-align: center;
+            font-size: 36px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        li {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+            font-size: 20px;
+            color: #555555;
+        }
+
+        li:last-child {
+            border-bottom: none;
+        }
+
+        li span.username {
+            color: #0073e6;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        li span.groups {
+            font-style: italic;
+            color: #777777;
+            margin-left: 10px;
+        }
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #ddd;
+            color: #333;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .back-button:hover {
+            background-color: #ccc;
+        }
+
+    </style>
+</head>
+
+<body>
+    <a href="{% url 'clients_main' %}" class="back-button">Назад</a>
+
+    <h1>Наши сотрудники</h1>
+    <ul>
+        {% for user in users %}
+        <li>
+            {{ user.first_name }} {{ user.last_name }}
+            <span class="username">{{ user.username }}</span> - <span class="groups">{{ user.groups.all|join:", " }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete User</title>
+</head>
+<body>
+    <h2>Вы действительно хотите удалить {{ user.username }}?</h2>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Да, удалить</button>
+        <a href="{% url 'user_list' %}">Нет</a>
+    </form>
+</body>
+</html>l>

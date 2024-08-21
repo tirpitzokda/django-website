@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин Техники</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #d0e7ff, #f5e1ff);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .header {
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            color: #0073e6;
+            font-weight: bold;
+        }
+
+        .nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #555555;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: #0073e6;
+        }
+
+        .auth-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .auth-links a {
+            text-decoration: none;
+            color: #0073e6;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .auth-links a:hover {
+            color: #555555;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background-color: #ffffff;
+            flex: 1;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            color: #0073e6;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #555555;
+            margin-bottom: 40px;
+        }
+
+        .hero button {
+            background-color: #0073e6;
+            color: #ffffff;
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .hero button:hover {
+            background-color: #005bb5;
+        }
+
+        .footer {
+            background-color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+            color: #555555;
+            margin-top: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">Магазин Техники</div>
+        <nav class="nav">
+            <a href="#">Главная</a>
+            <a href="{% url 'list' %}">Каталог</a>
+            <a href="{% url 'stuff' %}">О нас</a>
+            <a href="#">Контакты</a>
+        </nav>
+        <div class="auth-links">
+            <a href="{% url 'login' %}">Вход</a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Добро пожаловать в Магазин Техники</h1>
+        <p>Самые современные и качественные устройства по выгодным ценам</p>
+        <button>Перейти в каталог</button>
+    </section>
+
+    <footer class="footer">
+        &copy; 2024 Магазин Техники. Все права защищены.
+    </footer>
+</body>
+
+</html>
